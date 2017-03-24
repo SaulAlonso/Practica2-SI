@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -13,17 +14,31 @@ public class Reproduccion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idReproduccion;
 	
 	private Date fecha;
-	private Usuario usuario;
+	
+	@OneToOne
+	private Users users;
+	
+	@OneToOne
 	private Pelicula pelicula;
 	
-	public Reproduccion(Date fecha, Usuario usuario, Pelicula pelicula) {
-		super();
+	public Reproduccion() {
+	}
+
+	public Reproduccion(Date fecha, Users users, Pelicula pelicula) {
 		this.fecha = fecha;
-		this.usuario = usuario;
+		this.users = users;
 		this.pelicula = pelicula;
+	}
+
+	public Long getIdReproduccion() {
+		return idReproduccion;
+	}
+
+	public void setIdReproduccion(Long idReproduccion) {
+		this.idReproduccion = idReproduccion;
 	}
 
 	public Date getFecha() {
@@ -34,12 +49,12 @@ public class Reproduccion {
 		this.fecha = fecha;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Users getUsuario() {
+		return users;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuario(Users users) {
+		this.users = users;
 	}
 
 	public Pelicula getPelicula() {
@@ -52,7 +67,7 @@ public class Reproduccion {
 
 	@Override
 	public String toString() {
-		return "Reproduccion [fecha=" + fecha + ", usuario=" + usuario + ", pelicula=" + pelicula + "]";
+		return "Reproduccion [fecha=" + fecha + ", usuario=" + users + ", pelicula=" + pelicula + "]";
 	}
 	
 	

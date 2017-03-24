@@ -13,7 +13,7 @@ public class IntentoRestController {
 	private IntentoService intentoService;
 
 	@RequestMapping(value = "/intento", method = RequestMethod.GET)
-	public List<Intento> getPeliculas() {
+	public List<Intento> getIntento() {
 		return intentoService.getIntento();
 	}
 

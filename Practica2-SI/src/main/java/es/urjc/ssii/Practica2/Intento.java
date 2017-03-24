@@ -6,27 +6,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Intento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idIntento;
 	
 	private Date fecha;
 	private String ip;
-	private Usuario usuario;
+	@OneToOne
+	private Users users;
 	private boolean resultado;
 	
-	public Intento(Date fecha, String ip, Usuario usuario, boolean resultado) {
-		super();
+	public Intento(){
+		
+	}
+	
+	public Intento(Date fecha, String ip, Users users, boolean resultado) {
 		this.fecha = fecha;
 		this.ip = ip;
-		this.usuario = usuario;
+		this.users = users;
 		this.resultado = resultado;
 	}
 	
+	public Long getIdIntento() {
+		return idIntento;
+	}
+
+	public void setIdIntento(Long idIntento) {
+		this.idIntento = idIntento;
+	}
+
 	public Date getFecha() {
 		return fecha;
 	}
@@ -43,12 +56,12 @@ public class Intento {
 		this.ip = ip;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public Users getUsuario() {
+		return users;
 	}
 	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuario(Users users) {
+		this.users = users;
 	}
 	
 	public boolean isResultado() {
@@ -61,7 +74,7 @@ public class Intento {
 
 	@Override
 	public String toString() {
-		return "Intento [fecha=" + fecha + ", ip=" + ip + ", usuario=" + usuario + ", resultado=" + resultado + "]";
+		return "Intento [fecha=" + fecha + ", ip=" + ip + ", usuario=" + users + ", resultado=" + resultado + "]";
 	}
 	
 	

@@ -12,7 +12,7 @@ public class Pelicula {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idPeli;
 	
 	private String titulo;
 	private String pais;
@@ -27,7 +27,6 @@ public class Pelicula {
 
 	public Pelicula(String titulo, String pais, int año, String director, String resumen, String url,
 			ArrayList<String> etiquetas) {
-		super();
 		this.titulo = titulo;
 		this.pais = pais;
 		this.año = año;
@@ -36,7 +35,20 @@ public class Pelicula {
 		this.url = url;
 		this.etiquetas = etiquetas;
 	}
-
+	
+	public Pelicula(String titulo, String pais, int año, String director, String resumen, String url,
+			String etiquetas) {
+		this.titulo = titulo;
+		this.pais = pais;
+		this.año = año;
+		this.director = director;
+		this.resumen = resumen;
+		this.url = url;
+		
+		this.etiquetas = new ArrayList<String>();
+		this.etiquetas.add(etiquetas);
+	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -91,6 +103,14 @@ public class Pelicula {
 
 	public void setEtiquetas(ArrayList<String> etiquetas) {
 		this.etiquetas = etiquetas;
+	}
+
+	public Long getIdPeli() {
+		return idPeli;
+	}
+
+	public void setIdPeli(Long idPeli) {
+		this.idPeli = idPeli;
 	}
 
 	@Override

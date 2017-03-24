@@ -1,30 +1,41 @@
 package es.urjc.ssii.Practica2;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario {
+public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long idUsuario;
 	
 	private String nombre;
 	private String password;
 	private String apellidos;
 	private String correo;
-	private String fNacimiento;
+	private Date fNacimiento;
 	private String pais;
 	private String ciudad;
 	
-	public Usuario() {
+	public Users() {
 	}
 
-	public Usuario(String nombre, String password, String apellidos, String correo, String fNacimiento, String pais,
+	public Users(String nombre, String apellidos, String correo, Date fNacimiento, String pais,
 			String ciudad) {
-		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.correo = correo;
+		this.fNacimiento = fNacimiento;
+		this.pais = pais;
+		this.ciudad = ciudad;
+	}
+
+	public Users(String nombre, String password, String apellidos, String correo, Date fNacimiento, String pais,
+			String ciudad) {
 		this.nombre = nombre;
 		this.password = password;
 		this.apellidos = apellidos;
@@ -32,6 +43,14 @@ public class Usuario {
 		this.fNacimiento = fNacimiento;
 		this.pais = pais;
 		this.ciudad = ciudad;
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getNombre() {
@@ -66,11 +85,11 @@ public class Usuario {
 		this.correo = correo;
 	}
 	
-	public String getfNacimiento() {
+	public Date getfNacimiento() {
 		return fNacimiento;
 	}
 	
-	public void setfNacimiento(String fNacimiento) {
+	public void setfNacimiento(Date fNacimiento) {
 		this.fNacimiento = fNacimiento;
 	}
 	
