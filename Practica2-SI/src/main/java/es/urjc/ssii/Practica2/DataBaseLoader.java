@@ -1,6 +1,5 @@
 package es.urjc.ssii.Practica2;
 
-import java.net.InetAddress;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
